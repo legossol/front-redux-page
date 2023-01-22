@@ -45,7 +45,11 @@ const userSlice = createSlice({
         toeknRequest: (state,{payload}) =>{
             state.id = payload.id
             state.password = payload.password
+        },
+        registUser:  (state, {payload}) =>{
+            state.
         }
+
     }
     // extraReducers: (builder) =>{
     //     builder
