@@ -1,30 +1,29 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { constRegisteUser } from '../reducer/user.reducer';
+import { constDetailRegisteUser } from '../reducer/user.reducer';
 
-const Register = () =>{
+const DetailRegister = () =>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [regist, setRegist] = useState({
         name : 'name',
-        // password : 'password',
         // workLocate : 'workLocate',
         // departmentId : 'departmentId',
         // workStatus : 'workStatus',
         // officeEmail : 'officeEmail',
         // residentRegistrationNumber: 'residentRegistrationNumber',
-        // dateOfBirth : 'dateOfBirth',
+        dateOfBirth : 'dateOfBirth',
         // cellPhone : 'cellPhone',
-        // externalEmail: 'externalEmail',
+        externalEmail: 'externalEmail',
         // position : 'position',
         // grade : 'grade'
     
     });
-    const {name
+    const {name, externalEmail, dateOfBirth
         // , password
         // , workLocate, departmentId, workStatus, 
-        // officeEmail, residentRegistrationNumber, dateOfBirth, 
+        //  residentRegistrationNumber, 
         // cellPhone, externalEmail, position, grade
     } = regist;
     const handleChange = useCallback(
@@ -40,12 +39,12 @@ const Register = () =>{
     const handleSubmit = async (e) =>{
         e.preventDefault();
         e.stopPropagation();
-        dispatch(constRegisteUser(regist));
-        navigate('/');
+        dispatch(constDetailRegisteUser(regist));
+        navigate('/register/detail');
     };
     const cancleButton = (e) =>{
         e.preventDefault();
-        window.location = 'http://localhost:9077'
+        window.location = 'http://localhost:3000'
     };
     return (
         <>
@@ -57,10 +56,16 @@ const Register = () =>{
                 <b>이름</b>
             </label>
             <input type="text" name="name" value={regist.name||''} onChange={handleChange}/>
-            {/* <label htmlFor='password'>
-                <b>비번</b>
+            
+            <label htmlFor='externalEmail'>
+                <b>이메일</b>
             </label>
-            <input type="test" name="password" value={login.password || ''} onChange={handleChange}/> */}
+            <input type="test" name="externalEmail" value={regist.externalEmail || ''} onChange={handleChange}/>
+            
+            <label htmlFor='dateOfBirth'>
+                <b>생년월일</b>
+            </label>
+            <input type="test" name="dateOfBirth" value={regist.dateOfBirth || ''} onChange={handleChange}/>
 
             <button type='submit' onClick={(e)=>{handleSubmit(e)}}>
                 회원 등록
@@ -75,4 +80,4 @@ const Register = () =>{
         </>
     )
 }
-export default Register;
+export default DetailRegister;
