@@ -26,11 +26,41 @@ async (args) =>{
     const response = await UserService.registDetailUserInfo(args)
     return response.data
 })
+export const constGetUserDetail = createAsyncThunk("constGetUserDetail",
+async(userId) =>{
+    try{
+    const response = await UserService.findUserDetail(userId)
+    console.log('response::',response)
+    console.log('detail requested id == ',userId ,'response = ',response)
+    return response
+    }catch(e){
+        console.error("에러발생생", e.response.data);
+        return e.response.data
+    }
+})
+const isRejectAction=action=>
+    (action.type.endsWith('rejected'))
 // const isRejectedAction = action =>(action.type.endWith('rejected'))
 const userSlice = createSlice({
-    name: 'userInfo',
+    name: 'user',
     initialState:{
-        
+        loading: 'idle',
+        id: 0,
+        name: "",
+        userId: "",
+        departmentId: "",
+        workLocate: "",
+        workStatus: "",
+        groupWareId: "",
+        cellPhone: "",
+        residentRegistrationNumber: "",
+        dateOfBirth: "",
+        externalEmail: "",
+        position: "",
+        grade: "",
+        current:[],
+        entity: {},
+        error: null,
         // pageResult: {
         //     pageResult:{
         //         dtoList: [],
@@ -65,19 +95,25 @@ const userSlice = createSlice({
         },
         registDetailUser: (state, {payload}) =>{
             state.name = payload.name
+        },
+        addExtraActions:(state,{payload}) =>{
+            state.current = payload
         }
-
+    },
+    extraReducers: (builder) =>{
+        builder
+        .addCase(constGetUserDetail.fulfilled, (state,{payload}) =>{
+            state.entity = payload
+        })
+        // .addCase(constGetUserDetail.rejected, (state, action) =>{
+        //     state.error = action.error
+        // })
+        .addMatcher(isRejectAction, ()=>{})
+        .addDefaultCase((state,payload) => {})
     }
-    // extraReducers: (builder) =>{
-    //     builder
-    //     .addCase(getUser.fulfilled, (state,{payload}) =>{
-    //         state.pageResult = payload
-    //     })
-    //     .addMatcher(isRejectedAction).addDefaultCase()
-    //     .addDefaultCase((state,payload) => {})
-    // }
 })
 const {actions,reducer} = userSlice
-export const {toeknRequest, registUser, registDetailUser} = actions
+export const currrentUser = state => state.user.entity
+export const {toeknRequest, registUser, registDetailUser, addExtraActions} = actions
 
 export default reducer
