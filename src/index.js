@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import App from './App';
+import Layout from './app/common/component/CommonLayout'
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from '@reduxjs/toolkit';
 
@@ -15,7 +16,9 @@ root.render(
   // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />   
+        <Layout>
+          <App />   
+        </Layout>
       </BrowserRouter>
     </Provider>
   // </React.StrictMode>,
