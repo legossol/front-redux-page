@@ -34,7 +34,7 @@ const Login = () => {
     };
     const cancleButton = (e) =>{
         e.preventDefault();
-        window.location = 'http://localhost:9077'
+        window.location = 'http://localhost:3001'
     };
     return (
         <>

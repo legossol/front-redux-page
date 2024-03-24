@@ -11,7 +11,7 @@ const requestDefaultToken = (payload) =>{
     return axios.post(`http://localhost:9088/realms/myService/protocol/openid-connect/token`, JSON.stringify(payload), {headers}).then(res =>{console.log('sended Ok',res.data)})
 }
 const registUserInfo = (payload) =>{
-    return axios.post(`http://localhost:9001/management/user`, JSON.stringify(payload), {headers}).then(res =>{console.log('sended Ok',res.data)})
+    return axios.post(`http://localhost:9001/management/account/regist`, JSON.stringify(payload), {headers}).then(res =>{console.log('sended Ok',res.data)})
 }
 const registDetailUserInfo = (payload) =>{
     return axios.post(`http://localhost:9001/management/user/detail`, JSON.stringify(payload), {headers}).then(res =>{console.log('sended Ok',res.data)})

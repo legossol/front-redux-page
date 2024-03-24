@@ -1,0 +1,10 @@
+
+.buttonMargin{
+    /* border: 2px solid red; */
+    /* width: 100%; */
+    margin: 20px auto;
+    border: 5px solid #ccc;
+    padding: 14px 20px;
+    
+    /* opacity: 0.8; */
+}

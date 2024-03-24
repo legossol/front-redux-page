@@ -2,23 +2,21 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { constRegisteUser } from '../reducer/user.reducer';
+import RegisterForm from './RegisterForm';
+import { Button } from '@mui/material';
+import './../style/button.css';
+
+// https://gracefullight.dev/2018/02/05/redux-form-start redux foirm 예시
 
 const Register = () =>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [signUpFormData, setSignUpFormData] = useState('');
+    const handleSignUpData = (data)=>{
+        setSignUpFormData(data);
+    };
     const [regist, setRegist] = useState({
         name : 'name',
-        // password : 'password',
-        // workLocate : 'workLocate',
-        // departmentId : 'departmentId',
-        // workStatus : 'workStatus',
-        // officeEmail : 'officeEmail',
-        // residentRegistrationNumber: 'residentRegistrationNumber',
-        // dateOfBirth : 'dateOfBirth',
-        // cellPhone : 'cellPhone',
-        // externalEmail: 'externalEmail',
-        // position : 'position',
-        // grade : 'grade'
     
     });
     const {name
@@ -37,16 +35,21 @@ const Register = () =>{
         },
         [regist]
     );
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-        e.stopPropagation();
-        dispatch(constRegisteUser(regist));
+    const registHandle = async (fromData) =>{
+        // e.preventDefault();
+        // e.stopPropagation();
+        await dispatch(constRegisteUser(fromData));
         navigate('/');
     };
     const cancleButton = (e) =>{
         e.preventDefault();
         window.location = 'http://localhost:9077'
     };
+
+    const onSaveButtonClick = (e) =>{
+        e.preventDefault();
+
+    }
     return (
         <>
         <div>
@@ -56,22 +59,25 @@ const Register = () =>{
             <label htmlFor='name'>
                 <b>이름</b>
             </label>
-            <input type="text" name="name" value={regist.name||''} onChange={handleChange}/>
-            {/* <label htmlFor='password'>
-                <b>비번</b>
-            </label>
-            <input type="test" name="password" value={login.password || ''} onChange={handleChange}/> */}
-
-            <button type='submit' onClick={(e)=>{handleSubmit(e)}}>
-                회원 등록
-            </button>
-        </div>
-        <div>
             
-            <button type='button' onClick={(e) =>cancleButton(e)}>
-                Cancel
-            </button>
+            <input type="text" name="name" value={regist.name||''} onChange={handleChange}/>
+
+            {/* <button type='submit' onClick={(e)=>{handleSubmit(e)}}>
+                회원 등록
+            </button> */}
         </div>
+        <RegisterForm sendToRegister={registHandle}/>
+            {/* https://www.daleseo.com/material-ui-buttons/ 아이콘 정보 */}
+        <Button variant="contained" color="primary" className='buttonMargin'
+        onClick={registHandle}
+        // startIcon={<SaveIcon/>}
+        >
+            Save
+        </Button>
+        <button type='button'  onClick={(e) =>cancleButton(e)}>
+                Cancel
+        </button>
+    
         </>
     )
 }

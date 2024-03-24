@@ -1,18 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import Link from "next/link";
 //import logo from '../static/Image//NADRC-Logo-25-50.png';
 import "./../container/bootstrap.css";
 // import "./../container/bootstrap.bundle.min";
 //import myfunction from  "myfunction"
 //import "../static/font/font-awesome.min.css";
 
-import { slide as Menu } from "react-burger-menu";
-
 //import "../src/Javascripts/top.js"
 
 /*import "../US_Style.css"*/
-//import Link from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const linkStyle = {
   marginRight: 15
@@ -81,7 +77,7 @@ class Header extends React.Component {
                   <a class="nav-link" activeClassName="active" href="/">
                     HOME<span class="sr-only">(current)</span>
                   </a>
-                  {/*} <Link to="/" activeClassName="active nav-link">Home</Link>*/}
+                  {/* <Link to="/" activeClassName="active nav-link">Home</Link> */}
                 </li>
 
                 <li class="nav-item">
