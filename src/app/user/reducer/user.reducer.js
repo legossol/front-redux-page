@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { json } from "react-router-dom";
 import UserService from "../service/UserService";
 
 export const getUser = createAsyncThunk("getUser",

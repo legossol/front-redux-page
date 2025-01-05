@@ -16,9 +16,6 @@ const registUserInfo = (payload) =>{
 const registDetailUserInfo = (payload) =>{
     return axios.post(`http://localhost:9001/management/user/detail`, JSON.stringify(payload), {headers}).then(res =>{console.log('sended Ok',res.data)})
 }
-// const findUserDetail = (userId,payload) =>{
-//     return axios.get(`http://localhost:9001/management/user/${userId}`,JSON.stringify(payload), {headers}).then(res =>{console.log('sended Ok',res.data)})
-// }
 const findUserDetail = (userId,data) =>{
     return axios({
         url: `http://localhost:9001/management/user/${userId}`,

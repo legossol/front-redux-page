@@ -1,21 +1,16 @@
-import React from "react";
-import './../container/Sidebar.css'
+import React from 'react';
+import './../style/Sidebar.css';
 
-const Sidebar = () =>{
-    const menuTrigger = document.querySelector('.menu-trigger');
+const Sidebar = ({isSidebarOpen }) =>{
 
-    menuTrigger.addEventListener('click', (event) => {
-    event.currentTarget.classList.toggle('active-1');
-    });
-
-    return(
-        <div>
-            <a class="menu-trigger" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            </a>
+    return (
+        <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/board">게시판</a></li>
+            <li><a href="/support">1:1 문의</a></li>
+          </ul>
         </div>
-    )
+      );
 }
 export default Sidebar;

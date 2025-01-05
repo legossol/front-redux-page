@@ -1,13 +1,5 @@
 import React from "react";
-//import logo from '../static/Image//NADRC-Logo-25-50.png';
 import "./../container/bootstrap.css";
-// import "./../container/bootstrap.bundle.min";
-//import myfunction from  "myfunction"
-//import "../static/font/font-awesome.min.css";
-
-//import "../src/Javascripts/top.js"
-
-/*import "../US_Style.css"*/
 import { Link } from "react-router-dom";
 
 const linkStyle = {
@@ -21,7 +13,7 @@ class Header extends React.Component {
       topicBox: ""
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind( this);
   }
 
   handleChange({ target }) {
@@ -86,6 +78,19 @@ class Header extends React.Component {
                   </a>
                 </li>
               </ul>
+              <span class="input-group-btn">
+                <a href={"/signUp" + this.state.topicBox}>
+                  <button class="btn btn-search" type="button">
+                    <i  class="fa fa-search fa-fw" >회원가입</i>
+                  </button>
+                </a>
+                <a href={"/login" + this.state.topicBox}>
+                  <button class="btn btn-search" type="button">
+                    <i  class="fa fa-search fa-fw" >로그인</i>
+                  </button>
+                </a>
+              </span>
+        
 
               <form class="form-inline my-2 my-lg-0">
                 <div class="container">

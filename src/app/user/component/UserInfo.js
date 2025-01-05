@@ -1,7 +1,7 @@
-import React, {useCallback, useEffect, useState}  from 'react';
+import React, {useEffect}  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { constGetUserDetail, currrentUser ,getUserinfos} from './../reducer/user.reducer'
+import { constGetUserDetail, currrentUser} from './../reducer/user.reducer'
 
 const UserInfo = () =>{
     const dispatch = useDispatch();

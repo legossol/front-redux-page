@@ -1,13 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import App from './App';
 import Layout from './app/common/component/CommonLayout'
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from '@reduxjs/toolkit';
-
 
 const container = document.getElementById('root');
 const root = createRoot(container);

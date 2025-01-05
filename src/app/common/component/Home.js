@@ -19,9 +19,6 @@ const Home = () =>{
             <h2>This is Home</h2>
         </div>
         <br/>
-        <Button type="button" href="/signUp" size="large" color="primary" variant="outlined">
-            회원가입
-        </Button>
         
         <br/>
         </>

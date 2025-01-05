@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useCallback, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { requestToekn } from '../reducer/user.reducer';
 
@@ -34,13 +34,12 @@ const Login = () => {
     };
     const cancleButton = (e) =>{
         e.preventDefault();
-        window.location = 'http://localhost:3001'
+        window.location = 'http://umestory.jhssol.kro.kr:3088'
     };
     return (
         <>
         <div>
             <h1>로그인</h1>
-            <p>gonna login SSO</p>
             <hr/>
             <label htmlFor='username'>
                 <b>아이디</b>

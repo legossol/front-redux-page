@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useCallback, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { constRegisteUser } from '../reducer/user.reducer';
 import RegisterForm from './RegisterForm';
@@ -36,8 +36,6 @@ const Register = () =>{
         [regist]
     );
     const registHandle = async (fromData) =>{
-        // e.preventDefault();
-        // e.stopPropagation();
         await dispatch(constRegisteUser(fromData));
         navigate('/');
     };
